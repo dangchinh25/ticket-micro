@@ -4,14 +4,16 @@ import { RequestValidatonError } from '../errors/request-validation-err'
 
 export const errorHandle = (err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof RequestValidatonError) {
-        console.log("Handling this error as a request validation error")
+        const formattedErrors = err.errors.map(error => { return { message: error.msg, field: error.param } })
+
+        return res.status(400).send({ errors: formattedErrors })
     }
 
     if (err instanceof DatabaseConnectionError) {
-        console.log("Handling this error as a db connection error")
+        return res.status(500).send({ errors: [{ message: err.reason }] })
     }
 
     res.status(400).send({
-        message: err.message
+        errors: [{ message: "Something went wrong" }]
     })
 }
