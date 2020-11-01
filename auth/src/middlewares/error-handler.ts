@@ -4,13 +4,12 @@ import { RequestValidatonError } from '../errors/request-validation-err'
 
 export const errorHandle = (err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof RequestValidatonError) {
-        const formattedErrors = err.errors.map(error => { return { message: error.msg, field: error.param } })
 
-        return res.status(400).send({ errors: formattedErrors })
+        return res.status(err.statusCode).send({ errors: err.serializeError() })
     }
 
     if (err instanceof DatabaseConnectionError) {
-        return res.status(500).send({ errors: [{ message: err.reason }] })
+        return res.status(err.statusCode).send({ errors: err.serializeError() })
     }
 
     res.status(400).send({
