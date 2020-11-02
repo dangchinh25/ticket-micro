@@ -33,6 +33,8 @@ userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs)
 }
 
+// the part in <> is called generics in typescript, it is like argument for a function but instead of passing value to use,
+// we pass in type to tell the function to use and return value of that type
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema)
 
 export { User }
