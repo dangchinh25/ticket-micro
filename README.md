@@ -13,3 +13,8 @@ Development Flow:
 8. To add database to the service, the database will be similar to 1 seprate service, so we have to write a config file for its Deployment and Service similar to other service, and then run "skaffold dev" or "kubectl apply " to create a pod for the database
 9. To add secret to a service, use "generate secret" of kubectl, by "kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf" => This will create a secrete inside k8s and we make a change to the service's deployment file to register the value as environment variable
 10. To test in a microservice environment, we need a in-memory db package so simulate a virtual db, so we use "mongodb-memory-server"to generate a temp db for testing
+
+Client/NextJs Notes:
+1. From the browser/component, if we send any request we don't have to worry anything about the domain as it uses the default current domain which (in this app, which will be "https://ticketing.dev")
+2. From the Server Side Rendering (SSR) phse, (or inside getInitialProps of NextJs), if we send any request, we have to set up a domain to be able to send request
+as routing is handle by ingress-nginx and the current domain is not registered
