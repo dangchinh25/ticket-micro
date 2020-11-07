@@ -10,7 +10,7 @@ const LandingPage = ({ currentUser }) => {
 
 // when getInitailProps get called inside the server, one of the atributes passed to it is the "req", which is the same as the req object in ExpressJs
 LandingPage.getInitialProps = async (context) => {
-	const client = await buildClient(context);
+	const client = buildClient(context);
 
 	const { data } = await client.get('/api/users/currentuser');
 
