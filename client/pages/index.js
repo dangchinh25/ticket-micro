@@ -6,7 +6,8 @@ const LandingPage = ({ currentUser }) => {
 	return <h1>Landing page</h1>;
 };
 
-LandingPage.getInitialProps = async () => {
+// when getInitailProps get called inside the server, one of the atributes passed to it is the "req", which is the same as the req object in ExpressJs
+LandingPage.getInitialProps = async ({ req }) => {
 	if (typeof window === 'undefined') {
 		// we are on the server
 		// request should be made to http://SERVICENAME.NAMESPACE.svc.cluster.local/
@@ -14,7 +15,7 @@ LandingPage.getInitialProps = async () => {
 		// NAMESPACE: kubectl get namespace
 		const { data } = await axios.get(
 			'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser',
-			{ headers: { Host: 'ticketing.dev' } } // this is needed to inform ingress-nginx to recognise this use 'ticketing.dev' domain
+			{ headers: req.headers } // this is needed to inform ingress-nginx to recognise this use 'ticketing.dev' domain
 		);
 
 		return data;
