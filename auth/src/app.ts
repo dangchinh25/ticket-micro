@@ -7,8 +7,7 @@ import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/siginin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
-import { errorHandle } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import { errorHandle, NotFoundError } from '@clticketmicro/common';
 
 const app = express();
 app.set('trust proxy', true);
