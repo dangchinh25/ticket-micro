@@ -14,6 +14,8 @@ Development Flow:
 9. To add secret to a service, use "generate secret" of kubectl, by "kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf" => This will create a secrete inside k8s and we make a change to the service's deployment file to register the value as environment variable
 10. To test in a microservice environment, we need a in-memory db package so simulate a virtual db, so we use "mongodb-memory-server"to generate a temp db for testing
 
+11. If we want to do code sharing between services, we can create and publish an npm package so that in other service we can simply install it
+
 Client/NextJs Notes:
 1. From the browser/component, if we send any request we don't have to worry anything about the domain as it uses the default current domain which (in this app, which will be "https://ticketing.dev")
 2. From the Server Side Rendering (SSR) phse, (or inside getInitialProps of NextJs), if we send any request, we have to set up a domain to be able to send request
