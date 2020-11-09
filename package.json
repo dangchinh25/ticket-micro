@@ -1,0 +1,20 @@
+{
+	"name": "ticket-micro",
+	"version": "1.0.0",
+	"description": "Development Flow:",
+	"main": "index.js",
+	"scripts": {
+		"commit": "commit.sh"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dangchinh25/ticket-micro.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dangchinh25/ticket-micro/issues"
+	},
+	"homepage": "https://github.com/dangchinh25/ticket-micro#readme"
+}
