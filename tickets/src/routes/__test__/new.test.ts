@@ -46,4 +46,9 @@ it('returns an error if an invalid price is provided', async () => {
 		.send({ title: 'wiebciew' })
 		.expect(400);
 });
-it('create a ticket with valid input', async () => {});
+it('create a ticket with valid input', async () => {
+	await request(app)
+		.post('/api/tickets')
+		.send({ title: 'kwjbnrcsd', price: 20 })
+		.expect(201);
+});
