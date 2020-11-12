@@ -4,7 +4,9 @@
 	"description": "Development Flow:",
 	"main": "index.js",
 	"scripts": {
-		"commit": "commit.sh"
+		"commit": "commit.sh",
+		"dev": "skaffold dev",
+		"clean": "skaffold delete"
 	},
 	"repository": {
 		"type": "git",
