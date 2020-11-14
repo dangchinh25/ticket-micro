@@ -16,6 +16,9 @@ Development Flow:
 
 11. If we want to do code sharing between services, we can create and publish an npm package so that in other service we can simply install it
 12. To handle event sharing, we use NATS Streaming Server (not NATS) by using the "nats-streaming" image available on Docker Hub and write a deployment file for NATS Streaming Server with that image
+    To work with NATS, we use a node module "node-nats-streaming" 
+    Events will be defined as topic, each topic will have a different channel, and each service can subscribe to receive data from a topic or emit data to a topic/channel(pub-sub architechture ?)
+    NATS streaming stores all events in memory by default(we can configure to save in flat files or in DB), this is critical important in case a service goes down and go back online again, it can access all the data that it needs and begin to process again
 
 Client/NextJs Notes:
 1. From the browser/component, if we send any request we don't have to worry anything about the domain as it uses the default current domain which (in this app, which will be "https://ticketing.dev")
