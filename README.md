@@ -15,6 +15,7 @@ Development Flow:
 10. To test in a microservice environment, we need a in-memory db package so simulate a virtual db, so we use "mongodb-memory-server"to generate a temp db for testing
 
 11. If we want to do code sharing between services, we can create and publish an npm package so that in other service we can simply install it
+12. To handle event sharing, we use NATS Streaming Server (not NATS) by using the "nats-streaming" image available on Docker Hub and write a deployment file for NATS Streaming Server with that image
 
 Client/NextJs Notes:
 1. From the browser/component, if we send any request we don't have to worry anything about the domain as it uses the default current domain which (in this app, which will be "https://ticketing.dev")
