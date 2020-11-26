@@ -25,6 +25,7 @@ Development Flow:
 	while there are case when event is received but sth happen and the process is stopped midway, but NATS already think that the event is good to go
 	so it wont do anything => Data/Event lost
 	setManualAckMode will make the process wait for 30s to see if the process is "acknowledge" (which we will have to set manually), if nothing happen then it will think the process is broken and will try to send the event to other instance
+    - When using NATS, we need to do a mocks setup(kinda like a fake NATS client) so the test can pass like normal (Lecture 317 318)
 13. A huge problem in microservice is commnicating between services, which can cause "concurency" issue (this issue exists even in monolith application but it is less prominent/ visible), a solution to this issue is to add a "version" key into each record in the database, when trying to process new data/record, it has to check if the "version" is appropriate, in this way, we can force the service to process all the data in the correct order
 
 Client/NextJs Notes:
