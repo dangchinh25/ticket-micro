@@ -28,6 +28,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+	jest.clearAllMocks();
 	// reset the test db for each test so we have clean data
 	const collections = await mongoose.connection.db.collections();
 
