@@ -14,6 +14,8 @@ declare global {
 	}
 }
 
+jest.mock('../nats-wrapper');
+
 beforeAll(async () => {
 	process.env.JWT_KEY = 'asdf';
 	mongo = new MongoMemoryServer();
@@ -26,6 +28,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+	jest.clearAllMocks();
 	// reset the test db for each test so we have clean data
 	const collections = await mongoose.connection.db.collections();
 
